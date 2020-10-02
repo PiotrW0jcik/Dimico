@@ -11,6 +11,8 @@ namespace Dimico.Server.Data
         {
         }
 
+        public DbSet<Plan> Plans { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
