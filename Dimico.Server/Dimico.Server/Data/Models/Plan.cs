@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using static Dimico.Server.Data.Validation.Plan;
+
 namespace Dimico.Server.Data.Models
 {
     public class Plan
@@ -7,7 +9,7 @@ namespace Dimico.Server.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(1000)]
+        [MaxLength(MaxDescriptionLenght)]
         public string Description { get; set; }
 
         [Required]

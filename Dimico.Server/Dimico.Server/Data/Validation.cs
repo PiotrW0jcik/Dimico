@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Dimico.Server.Data
+﻿namespace Dimico.Server.Data
 {
     public class Validation
     {
+        public class Plan
+        {
+            public const int MaxDescriptionLenght = 1000;
+        }
     }
 }
