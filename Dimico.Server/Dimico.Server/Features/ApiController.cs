@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Dimico.Server.Controllers
+namespace Dimico.Server.Features
 {
     [ApiController]
     [Route("[controller]")]
