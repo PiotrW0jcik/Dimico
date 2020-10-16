@@ -20,9 +20,9 @@ private registerPath = environment.apiUrl + '/identity/register';
   }
 
   saveToken(token){
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', token);
   }
   getToken(){
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
   }
 }
