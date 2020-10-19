@@ -10,6 +10,7 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { PlanService } from './services/plan.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { PlanService } from './services/plan.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, PlanService],
+  providers: [AuthService, PlanService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
