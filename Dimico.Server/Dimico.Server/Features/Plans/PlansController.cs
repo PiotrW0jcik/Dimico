@@ -17,7 +17,10 @@ namespace Dimico.Server.Features.Plans
         {
             var userId = this.User.GetId();
 
-            var id = this.planService.Create(model.ImageUrl, model.Description, userId);
+            var id = await this.planService.Create(
+                model.ImageUrl, 
+                model.Description, 
+                userId);
 
             return Created(nameof(this.Create), id);
         }
