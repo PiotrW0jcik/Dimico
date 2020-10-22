@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Dimico.Server.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +13,15 @@ namespace Dimico.Server.Features.Plans
 
         public PlansController(IPlanService planService) => this.planService = planService;
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IEnumerable<PlanListingResponseModel>> Mine()
+        {
+            var userId = this.User.GetId();
+
+            return await this.planService.ByUser(userId);
+
+        }
         [Authorize]
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreatePlanRequestModel model)
