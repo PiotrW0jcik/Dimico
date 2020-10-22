@@ -13,8 +13,6 @@ export class PlanService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   create(data): Observable<Plan>{
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.authService.getToken()}`);
-    return this.http.post<Plan>(this.planPath, data,{headers});
+    return this.http.post<Plan>(this.planPath, data);
   }
 }
