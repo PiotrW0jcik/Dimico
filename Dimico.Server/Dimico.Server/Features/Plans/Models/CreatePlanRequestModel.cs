@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using static Dimico.Server.Data.Validation.Plan;
 
-namespace Dimico.Server.Features.Plans
+namespace Dimico.Server.Features.Plans.Models
 {
     public class CreatePlanRequestModel
     {

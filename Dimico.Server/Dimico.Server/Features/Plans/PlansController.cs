@@ -1,28 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dimico.Server.Features.Plans.Models;
 using Dimico.Server.Infrastructure;
+using Dimico.Server.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dimico.Server.Features.Plans
 {
+    [Authorize]
     public class PlansController : ApiController
     {
         private readonly IPlanService planService;
 
         public PlansController(IPlanService planService) => this.planService = planService;
 
-        [Authorize]
         [HttpGet]
-        public async Task<IEnumerable<PlanListingResponseModel>> Mine()
+        public async Task<IEnumerable<PlanListingServiceModel>> Mine()
         {
             var userId = this.User.GetId();
 
             return await this.planService.ByUser(userId);
 
         }
-        [Authorize]
+
+        [Route("{id}")]
+        [HttpGet]
+        public async Task<ActionResult<PlanDetailsServiceModel>> Details(int id)
+            => await this.planService.Details(id);
+
+           
+        
+
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreatePlanRequestModel model)
         {

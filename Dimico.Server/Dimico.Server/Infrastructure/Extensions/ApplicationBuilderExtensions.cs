@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Dimico.Server.Infrastructure
+namespace Dimico.Server.Infrastructure.Extensions
 {
     public static class ApplicationBuilderExtensions
     {

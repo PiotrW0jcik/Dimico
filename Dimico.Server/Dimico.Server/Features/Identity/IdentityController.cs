@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Dimico.Server.Data.Models;
-using Dimico.Server.Models.Identity;
+using Dimico.Server.Features.Identity.Models;
+using Dimico.Server.Models.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

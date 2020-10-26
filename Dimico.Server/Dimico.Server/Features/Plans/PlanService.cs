@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dimico.Server.Data;
 using Dimico.Server.Data.Models;
+using Dimico.Server.Features.Plans.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dimico.Server.Features.Plans
@@ -27,16 +28,33 @@ namespace Dimico.Server.Features.Plans
             return plan.Id;
         }
 
-        public async Task<IEnumerable<PlanListingResponseModel>> ByUser(string userId)
+       
+
+        public async Task<IEnumerable<PlanListingServiceModel>> ByUser(string userId)
             => await this.data
                 .Plans
                 .Where(c => c.UserId == userId)
-                .Select(c => new PlanListingResponseModel
+                .Select(c => new PlanListingServiceModel
                 {
                     Id = c.Id,
                     ImageUrl = c.ImageUrl
                 })
                 .ToListAsync();
+
+        public async Task<PlanDetailsServiceModel> Details(int id)
+            => await this.data
+                .Plans
+                .Where(c => c.Id == id)
+                .Select(c => new PlanDetailsServiceModel
+                {
+                    Id = c.Id,
+                    UserId = c.UserId,
+                    ImageUrl = c.ImageUrl,
+                    Description = c.Description,
+                    UserName = c.User.UserName
+                })
+                .FirstOrDefaultAsync();
+
 
     }
 }

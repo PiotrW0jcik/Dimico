@@ -1,4 +1,4 @@
-﻿namespace Dimico.Server.Features.Identity
+﻿namespace Dimico.Server.Features.Identity.Models
 {
     public class LoginResponseModel
     {

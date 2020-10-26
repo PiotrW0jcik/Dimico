@@ -3,6 +3,7 @@ using Dimico.Server.Data;
 using Dimico.Server.Data.Models;
 using Dimico.Server.Features.Identity;
 using Dimico.Server.Features.Plans;
+using Dimico.Server.Infrastructure.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-namespace Dimico.Server.Infrastructure
+namespace Dimico.Server.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -88,5 +89,10 @@ namespace Dimico.Server.Infrastructure
                         Version = "v1"
                     });
             });
+
+        public static void AddApiControllers(this IServiceCollection services)
+            => services.AddControllers(options => options
+                .Filters
+                .Add<ModelOrNotFoundActionFilter>());
     }
 }

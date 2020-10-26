@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 
-namespace Dimico.Server.Infrastructure
+namespace Dimico.Server.Infrastructure.Extensions
 {
     public static class IdentityExtensions
     {

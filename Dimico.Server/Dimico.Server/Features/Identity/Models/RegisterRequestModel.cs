@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dimico.Server.Models.Identity
+namespace Dimico.Server.Models.Identity.Models
 {
     public class RegisterRequestModel
     {

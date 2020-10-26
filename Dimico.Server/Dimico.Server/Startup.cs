@@ -1,4 +1,6 @@
 using Dimico.Server.Infrastructure;
+using Dimico.Server.Infrastructure.Extensions;
+using Dimico.Server.Infrastructure.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +25,7 @@ namespace Dimico.Server
                 .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
                 .AddApplicationServices()
                 .AddSwagger()
-                .AddControllers();
+                .AddApiControllers();
         
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Dimico.Server.Infrastructure
+namespace Dimico.Server.Infrastructure.Extensions
 {
     public static class ConfigurationExtensions
     {

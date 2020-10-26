@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dimico.Server.Features.Plans
+namespace Dimico.Server.Features.Plans.Models
 {
-    public class PlanListingResponseModel
+    public class PlanListingServiceModel
     {
 
         public int Id { get; set; }
