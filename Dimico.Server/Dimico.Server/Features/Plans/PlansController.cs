@@ -44,5 +44,24 @@ namespace Dimico.Server.Features.Plans
 
             return Created(nameof(this.Create), id);
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(UpdatePlanRequestModel model)
+        {
+            var userId = this.User.GetId();
+
+            var updated = await this.planService.Update(
+                model.Id,
+                model.Description,
+                userId);
+
+            if (!updated)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+
+        }
     }
 }

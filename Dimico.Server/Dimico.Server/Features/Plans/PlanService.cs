@@ -28,7 +28,26 @@ namespace Dimico.Server.Features.Plans
             return plan.Id;
         }
 
-       
+        public async Task<bool> Update(int id, string description, string userId)
+        {
+            var plan = await this.data
+                .Plans
+                .Where(c => c.Id == id && c.UserId == userId)
+                .FirstOrDefaultAsync();
+
+            if (plan == null)
+            {
+                return false;
+            }
+
+            plan.Description = description;
+
+            await this.data.SaveChangesAsync();
+
+            return true;
+
+        }
+
 
         public async Task<IEnumerable<PlanListingServiceModel>> ByUser(string userId)
             => await this.data

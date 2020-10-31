@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 using static Dimico.Server.Data.Validation.Plan;
 
 namespace Dimico.Server.Features.Plans.Models
 {
-    public class CreatePlanRequestModel
+    public class UpdatePlanRequestModel
     {
-        [Required]
-        public string ImageUrl { get; set; }
+        public int Id { get; set; }
+
 
         [Required]
         [MaxLength(MaxDescriptionLenght)]
