@@ -5,6 +5,7 @@ using Dimico.Server.Data;
 using Dimico.Server.Data.Models;
 using Dimico.Server.Features.Plans.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Dimico.Server.Features.Plans
 {
@@ -30,10 +31,7 @@ namespace Dimico.Server.Features.Plans
 
         public async Task<bool> Update(int id, string description, string userId)
         {
-            var plan = await this.data
-                .Plans
-                .Where(c => c.Id == id && c.UserId == userId)
-                .FirstOrDefaultAsync();
+            var plan = await this.GetByIdAndByUserId(id, userId);
 
             if (plan == null)
             {
@@ -46,6 +44,22 @@ namespace Dimico.Server.Features.Plans
 
             return true;
 
+        }
+
+        public async Task<bool> Delete(int id, string userId)
+        {
+            var plan = await this.GetByIdAndByUserId(id, userId);
+
+            if (plan == null)
+            {
+                return false;
+            }
+
+            this.data.Plans.Remove(plan);
+
+            await this.data.SaveChangesAsync();
+
+            return true;
         }
 
 
@@ -74,6 +88,11 @@ namespace Dimico.Server.Features.Plans
                 })
                 .FirstOrDefaultAsync();
 
+        private async Task<Plan> GetByIdAndByUserId(int id, string userId)
+            => await this.data
+                .Plans
+                .Where(c => c.Id == id && c.UserId == userId)
+                .FirstOrDefaultAsync();
 
     }
 }

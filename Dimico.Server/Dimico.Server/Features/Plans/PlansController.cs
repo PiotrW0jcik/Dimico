@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dimico.Server.Features.Plans.Models;
-using Dimico.Server.Infrastructure;
 using Dimico.Server.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
+using static Dimico.Server.Infrastructure.WebConstants;
+
+
+
 
 namespace Dimico.Server.Features.Plans
 {
@@ -24,7 +28,7 @@ namespace Dimico.Server.Features.Plans
 
         }
 
-        [Route("{id}")]
+        [Route(Id)]
         [HttpGet]
         public async Task<ActionResult<PlanDetailsServiceModel>> Details(int id)
             => await this.planService.Details(id);
@@ -61,7 +65,23 @@ namespace Dimico.Server.Features.Plans
             }
 
             return Ok();
-
         }
+
+        [HttpDelete]
+        [Route(Id)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var userId = this.User.GetId();
+
+            var deleted = await this.planService.Delete(id, userId);
+
+            if (!deleted)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
     }
 }
