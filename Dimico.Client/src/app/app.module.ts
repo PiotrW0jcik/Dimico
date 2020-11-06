@@ -13,6 +13,7 @@ import { CreatepostComponent } from './createpost/createpost.component';
 import { PlanService } from './services/plan.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ListPlansComponent } from './list-plans/list-plans.component';
+import { DetailsPlanComponent } from './details-plan/details-plan.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListPlansComponent } from './list-plans/list-plans.component';
     LoginComponent,
     RegisterComponent,
     CreatepostComponent,
-    ListPlansComponent
+    ListPlansComponent,
+    DetailsPlanComponent
   ],
   imports: [
     BrowserModule,
