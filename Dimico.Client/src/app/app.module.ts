@@ -12,13 +12,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { PlanService } from './services/plan.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ListPlansComponent } from './list-plans/list-plans.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CreatepostComponent
+    CreatepostComponent,
+    ListPlansComponent
   ],
   imports: [
     BrowserModule,

@@ -15,4 +15,9 @@ export class PlanService {
   create(data): Observable<Plan>{
     return this.http.post<Plan>(this.planPath, data);
   }
+
+  getPlans(): Observable<Array<Plan>> {
+    return this.http.get<Array<Plan>>(this.planPath);
+  }
 }
+
