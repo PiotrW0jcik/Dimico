@@ -13,10 +13,19 @@ export class ListPlansComponent implements OnInit {
   constructor(private planService: PlanService,private router: Router){ }
 
   ngOnInit(): void {
+   this.fetchPlan()
+  }
+  fetchPlan() {
     this.planService.getPlans().subscribe(plans => {
       this.plans = plans;
       console.log(this.plans)
     })
   }
 
+  deletePlan(id){
+    this.planService.deletePlan(id).subscribe(res =>{
+      console.log(res);
+      this.fetchPlan(); 
+    })
+  }
 }

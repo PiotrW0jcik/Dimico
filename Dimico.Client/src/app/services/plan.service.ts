@@ -23,5 +23,9 @@ export class PlanService {
   getPlan(id): Observable<Plan>{
     return this.http.get<Plan>(this.planPath+ '/' + id)
   }
+
+  deletePlan(id) {
+    return this.http.delete(this.planPath + '/' + id)
+  }
 }
 
