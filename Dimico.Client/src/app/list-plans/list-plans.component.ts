@@ -22,6 +22,10 @@ export class ListPlansComponent implements OnInit {
     })
   }
 
+  editPlan(id){
+    this.router.navigate(["plans", id ,"edit"]);
+  }
+
   deletePlan(id){
     this.planService.deletePlan(id).subscribe(res =>{
       console.log(res);

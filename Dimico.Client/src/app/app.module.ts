@@ -14,6 +14,7 @@ import { PlanService } from './services/plan.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ListPlansComponent } from './list-plans/list-plans.component';
 import { DetailsPlanComponent } from './details-plan/details-plan.component';
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DetailsPlanComponent } from './details-plan/details-plan.component';
     RegisterComponent,
     CreatepostComponent,
     ListPlansComponent,
-    DetailsPlanComponent
+    DetailsPlanComponent,
+    EditPlanComponent
   ],
   imports: [
     BrowserModule,
