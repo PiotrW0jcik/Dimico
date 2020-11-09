@@ -15,6 +15,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { ListPlansComponent } from './list-plans/list-plans.component';
 import { DetailsPlanComponent } from './details-plan/details-plan.component';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
+import { ErrorInterceptorService } from './services/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,11 @@ import { EditPlanComponent } from './edit-plan/edit-plan.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true
     }
   ],
