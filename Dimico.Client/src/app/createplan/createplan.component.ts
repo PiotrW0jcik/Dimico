@@ -1,15 +1,16 @@
-import { PlanService } from './../services/plan.service';
+import { PlanService } from '../services/plan.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-createpost',
-  templateUrl: './createpost.component.html',
-  styleUrls: ['./createpost.component.css']
+  selector: 'app-createplan',
+  templateUrl: './createplan.component.html',
+  styleUrls: ['./createplan.component.css']
 })
-export class CreatepostComponent {
+export class CreateplanComponent {
   planForm: FormGroup;
-  constructor(private fb: FormBuilder, private planService: PlanService) {
+  constructor(private fb: FormBuilder, private planService: PlanService,private toastrService: ToastrService) {
     this.planForm = this.fb.group({
       'ImageUrl' : ['', Validators.required],
       'Description' : ['']
@@ -24,6 +25,7 @@ export class CreatepostComponent {
 
   create(){
     this.planService.create(this.planForm.value).subscribe(res => {
+      this.toastrService.success("Success")
       console.log(res);
     });
   }

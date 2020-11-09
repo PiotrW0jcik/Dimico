@@ -1,4 +1,4 @@
-import { CreatepostComponent } from './createpost/createpost.component';
+import { CreateplanComponent } from './createplan/createplan.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -11,7 +11,7 @@ import { EditPlanComponent } from './edit-plan/edit-plan.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'create' , component: CreatepostComponent, canActivate: [AuthGuardService]},
+  { path: 'create' , component: CreateplanComponent, canActivate: [AuthGuardService]},
   { path: 'plans', component: ListPlansComponent, canActivate: [AuthGuardService]},
   { path: 'plans/:id', component: DetailsPlanComponent, /*canActivate: [AuthGuardService*/},
   { path: 'plans/:id/edit', component: EditPlanComponent }

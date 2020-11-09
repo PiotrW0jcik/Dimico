@@ -9,20 +9,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CreatepostComponent } from './createpost/createpost.component';
+import { CreateplanComponent } from './createplan/createplan.component';
 import { PlanService } from './services/plan.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ListPlansComponent } from './list-plans/list-plans.component';
 import { DetailsPlanComponent } from './details-plan/details-plan.component';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CreatepostComponent,
+    CreateplanComponent,
     ListPlansComponent,
     DetailsPlanComponent,
     EditPlanComponent
@@ -32,6 +34,7 @@ import { ErrorInterceptorService } from './services/error-interceptor.service';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthService,
