@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using Dimico.Server.Data.Base;
 using static Dimico.Server.Data.Validation.Plan;
 
 namespace Dimico.Server.Data.Models
 {
-    public class Plan
+    public class Plan : DeletableEntity
     {
         public int Id { get; set; }
 

@@ -67,6 +67,7 @@ namespace Dimico.Server.Features.Plans
             => await this.data
                 .Plans
                 .Where(c => c.UserId == userId)
+                .OrderByDescending(c => c.CreatedOn)
                 .Select(c => new PlanListingServiceModel
                 {
                     Id = c.Id,

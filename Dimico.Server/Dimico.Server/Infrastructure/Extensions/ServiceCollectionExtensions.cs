@@ -4,6 +4,7 @@ using Dimico.Server.Data.Models;
 using Dimico.Server.Features.Identity;
 using Dimico.Server.Features.Plans;
 using Dimico.Server.Infrastructure.Filters;
+using Dimico.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -76,6 +77,7 @@ namespace Dimico.Server.Infrastructure.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services) 
             => services
                 .AddTransient<IIdentityServices, IdentityServices>()
+                .AddScoped<ICurrentUserService,CurrentUserService>()
                 .AddTransient<IPlanService, PlanService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services) 
