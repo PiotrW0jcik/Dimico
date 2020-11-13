@@ -27,13 +27,8 @@ namespace Dimico.Server.Features.Plans
         }
 
         [HttpGet]
-        public async Task<IEnumerable<PlanListingServiceModel>> Mine()
-        {
-            var userId = this.currentUser.GetId();
-
-            return await this.plans.ByUser(userId);
-
-        }
+        public async Task<IEnumerable<PlanListingServiceModel>> Mine() 
+            => await this.plans.ByUser(this.currentUser.GetId());
 
         [Route(Id)]
         [HttpGet]

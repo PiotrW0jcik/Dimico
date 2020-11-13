@@ -6,5 +6,11 @@
         {
             public const int MaxDescriptionLenght = 1000;
         }
+
+        public class User
+        {
+            public const int MaxDescriptionLenght = 40;
+            public const int MaxBiographyLenght = 150;
+        }
     }
 }

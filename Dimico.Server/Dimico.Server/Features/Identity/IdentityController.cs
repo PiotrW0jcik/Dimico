@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Dimico.Server.Data.Models;
 using Dimico.Server.Features.Identity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -22,6 +23,8 @@ namespace Dimico.Server.Features.Identity
             this.identity = identity;
             this.appSettings = appSettings.Value;
         }
+
+        
 
         [HttpPost]
         [Route(nameof(Register))]
