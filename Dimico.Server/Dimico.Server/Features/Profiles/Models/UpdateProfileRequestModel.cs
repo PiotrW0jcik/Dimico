@@ -1,13 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Dimico.Server.Data.Models;
+
 using static Dimico.Server.Data.Validation.User;
 
-namespace Dimico.Server.Data.Models
+namespace Dimico.Server.Features.Profiles.Models
 {
-    public class Profile
+    public class UpdateProfileRequestModel
     {
-        [Key]
-        [Required]
-        public string UserId { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
+
+        public string UserName { get; set; }
 
         [MaxLength(MaxNameLenght)]
         public string Name { get; set; }

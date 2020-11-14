@@ -9,7 +9,7 @@
 
         public class User
         {
-            public const int MaxDescriptionLenght = 40;
+            public const int MaxNameLenght = 40;
             public const int MaxBiographyLenght = 150;
         }
     }

@@ -67,6 +67,36 @@ namespace Dimico.Server.Data.Migrations
                     b.ToTable("Plans");
                 });
 
+            modelBuilder.Entity("Dimico.Server.Data.Models.Profile", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Biography")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPrivate")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MainPhotoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("WebSite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Profiles");
+                });
+
             modelBuilder.Entity("Dimico.Server.Data.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -286,42 +316,13 @@ namespace Dimico.Server.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Dimico.Server.Data.Models.User", b =>
+            modelBuilder.Entity("Dimico.Server.Data.Models.Profile", b =>
                 {
-                    b.OwnsOne("Dimico.Server.Data.Models.Profile", "Profile", b1 =>
-                        {
-                            b1.Property<string>("UserId")
-                                .HasColumnType("nvarchar(450)");
-
-                            b1.Property<string>("Biography")
-                                .HasMaxLength(150)
-                                .HasColumnType("nvarchar(150)");
-
-                            b1.Property<int>("Gender")
-                                .HasColumnType("int");
-
-                            b1.Property<bool>("IsPrivate")
-                                .HasColumnType("bit");
-
-                            b1.Property<string>("MainPhotoUrl")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Name")
-                                .HasMaxLength(40)
-                                .HasColumnType("nvarchar(40)");
-
-                            b1.Property<string>("WebSite")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("UserId");
-
-                            b1.ToTable("AspNetUsers");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserId");
-                        });
-
-                    b.Navigation("Profile");
+                    b.HasOne("Dimico.Server.Data.Models.User", null)
+                        .WithOne("Profile")
+                        .HasForeignKey("Dimico.Server.Data.Models.Profile", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -378,6 +379,8 @@ namespace Dimico.Server.Data.Migrations
             modelBuilder.Entity("Dimico.Server.Data.Models.User", b =>
                 {
                     b.Navigation("Plans");
+
+                    b.Navigation("Profile");
                 });
 #pragma warning restore 612, 618
         }

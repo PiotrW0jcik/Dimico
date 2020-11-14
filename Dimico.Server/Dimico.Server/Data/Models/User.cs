@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Identity;
 namespace Dimico.Server.Data.Models
 {
 
-    public class User : IdentityUser,IEntity 
+    public class User : IdentityUser,IEntity
     {
-        public Profile Profile { get; set; }
+        public Profile Profile { get; set; } 
 
         public DateTime CreatedOn { get; set; }
 

@@ -30,8 +30,9 @@ namespace Dimico.Server.Features.Plans
         public async Task<IEnumerable<PlanListingServiceModel>> Mine() 
             => await this.plans.ByUser(this.currentUser.GetId());
 
-        [Route(Id)]
+        
         [HttpGet]
+        [Route(Id)]
         public async Task<ActionResult<PlanDetailsServiceModel>> Details(int id)
             => await this.plans.Details(id);
 
@@ -52,16 +53,17 @@ namespace Dimico.Server.Features.Plans
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update(UpdatePlanRequestModel model)
+        [Route(Id)]
+        public async Task<ActionResult> Update(int id,UpdatePlanRequestModel model)
         {
             var userId = this.currentUser.GetId();
 
-            var updated = await this.plans.Update(
-                model.Id,
+            var result = await this.plans.Update(
+                id,
                 model.Description,
                 userId);
 
-            if (!updated)
+            if (result.Failure)
             {
                 return BadRequest();
             }
@@ -75,9 +77,9 @@ namespace Dimico.Server.Features.Plans
         {
             var userId = this.currentUser.GetId();
 
-            var deleted = await this.plans.Delete(id, userId);
+            var result = await this.plans.Delete(id, userId);
 
-            if (!deleted)
+            if (result.Failure)
             {
                 return BadRequest();
             }

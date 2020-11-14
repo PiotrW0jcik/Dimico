@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Dimico.Server.Data.Base;
 using Dimico.Server.Data.Models;
-using Dimico.Server.Data.Models.Base;
 using Dimico.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +21,8 @@ namespace Dimico.Server.Data
 
         public DbSet<Plan> Plans { get; set; }
 
-    
+        public DbSet<Profile> Profiles { get; set; }
+
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
@@ -53,7 +53,11 @@ namespace Dimico.Server.Data
 
             builder
                 .Entity<User>()
-                .OwnsOne(u => u.Profile);
+                .HasOne(u => u.Profile)
+                .WithOne()
+                .HasForeignKey<Profile>(p => p.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             base.OnModelCreating(builder);
         }

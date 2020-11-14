@@ -6,9 +6,6 @@ namespace Dimico.Server.Features.Plans.Models
 {
     public class UpdatePlanRequestModel
     {
-        public int Id { get; set; }
-
-
         [Required]
         [MaxLength(MaxDescriptionLenght)]
         public string Description { get; set; }
