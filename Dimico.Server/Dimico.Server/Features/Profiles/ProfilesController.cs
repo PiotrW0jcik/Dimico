@@ -1,10 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Dimico.Server.Features.Identity.Models;
 using Dimico.Server.Features.Profiles.Models;
 using Dimico.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Dimico.Server.Features.Profiles
 {

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Dimico.Server.Infrastructure.Services;
 
 namespace Dimico.Server.Features.Follows
 {
-    public class IFollowService
+    public interface IFollowService
     {
+        Task<Result> Follow(string userId, string followerId);
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System.Text;
 using Dimico.Server.Data;
 using Dimico.Server.Data.Models;
+using Dimico.Server.Features.Follows;
 using Dimico.Server.Features.Identity;
 using Dimico.Server.Features.Plans;
 using Dimico.Server.Features.Profiles;
+using Dimico.Server.Features.Search;
 using Dimico.Server.Infrastructure.Filters;
 using Dimico.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -80,7 +82,9 @@ namespace Dimico.Server.Infrastructure.Extensions
                 .AddScoped<ICurrentUserService, CurrentUserService>()
                 .AddTransient<IIdentityServices, IdentityServices>()
                 .AddTransient<IProfileServices, ProfileServices>()
-                .AddTransient<IPlanService, PlanService>();
+                .AddTransient<IPlanService, PlanService>()
+                .AddTransient<IFollowService, FollowService>()
+                .AddTransient<ISearchService, SearchService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services) 
             => services.AddSwaggerGen(c =>
