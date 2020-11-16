@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Dimico.Server.Features.Profiles
 {
+    [Authorize]
     public class ProfilesController : ApiController
     {
         private readonly IProfileServices profiles;
@@ -22,12 +23,10 @@ namespace Dimico.Server.Features.Profiles
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<ProfileServiceModel>> Mine()
             => await this.profiles.ByUser(this.currentUser.GetId());
 
         [HttpPut]
-        [Authorize]
         public async Task<IActionResult> Update(UpdateProfileRequestModel model)
         {
             var userId = this.currentUser.GetId();

@@ -23,6 +23,8 @@ namespace Dimico.Server.Data
 
         public DbSet<Profile> Profiles { get; set; }
 
+        public DbSet<Follow> Follows { get; set; }
+
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
@@ -58,6 +60,19 @@ namespace Dimico.Server.Data
                 .HasForeignKey<Profile>(p => p.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder
+                .Entity<Follow>()
+                .HasOne(f => f.User)
+                .WithMany()
+                .HasForeignKey(f => f.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Follow>()
+                .HasOne(f => f.Follower)
+                .WithMany()
+                .HasForeignKey(f => f.FollowerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }
