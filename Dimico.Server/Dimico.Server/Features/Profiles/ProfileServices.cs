@@ -14,17 +14,23 @@ namespace Dimico.Server.Features.Profiles
 
         public ProfileServices(DimicoDbContext data) => this.data = data;
 
-        public async Task<ProfileServiceModel> ByUser(string userId)
+        public async Task<ProfileServiceModel> ByUser(string userId,bool allInformation = false) 
             => await this.data
-                .Users
+                .Users 
                 .Where(u => u.Id == userId)
-                .Select(u => new ProfileServiceModel
+                .Select(u => allInformation? new PublicProfileServiceModel()
                 {
                     Name = u.Profile.Name,
                     MainPhotoUrl = u.Profile.MainPhotoUrl,
                     WebSite = u.Profile.WebSite,
                     Biography = u.Profile.Biography,
-                    Gender =  u.Profile.Gender.ToString(),
+                    Gender = u.Profile.Gender.ToString(),
+                    IsPrivate = u.Profile.IsPrivate
+
+                }: new ProfileServiceModel
+                {
+                    Name = u.Profile.Name,
+                    MainPhotoUrl = u.Profile.MainPhotoUrl,
                     IsPrivate = u.Profile.IsPrivate
 
                 })
@@ -164,5 +170,12 @@ namespace Dimico.Server.Features.Profiles
             }
 
         }
+
+        public async Task<bool> IsPublic(string userId)
+            => await this.data
+                .Profiles
+                .Where(p => p.UserId == userId)
+                .Select(p => !p.IsPrivate)
+                .FirstOrDefaultAsync();
     }
 }

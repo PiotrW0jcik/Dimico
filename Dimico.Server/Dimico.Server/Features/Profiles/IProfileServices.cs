@@ -7,7 +7,7 @@ namespace Dimico.Server.Features.Profiles
 {
     public interface IProfileServices
     {
-        Task<ProfileServiceModel> ByUser(string userId);
+        Task<ProfileServiceModel> ByUser(string userId, bool allInformation=false);
 
         Task<Result> Update(
             string userId, 
@@ -19,5 +19,7 @@ namespace Dimico.Server.Features.Profiles
             string biography, 
             Gender gender, 
             bool isPrivate);
+
+        Task<bool> IsPublic(string userId);
     }
 }

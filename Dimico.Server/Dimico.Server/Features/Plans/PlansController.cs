@@ -33,7 +33,7 @@ namespace Dimico.Server.Features.Plans
         
         [HttpGet]
         [Route(Id)]
-        public async Task<ActionResult<PlanDetailsServiceModel>> Details(int id)
+        public async Task<PlanDetailsServiceModel> Details(int id)
             => await this.plans.Details(id);
 
            

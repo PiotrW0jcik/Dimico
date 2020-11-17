@@ -1,8 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Dimico.Server.Features.Follows;
 using Dimico.Server.Features.Profiles.Models;
 using Dimico.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
+using static Dimico.Server.Infrastructure.WebConstants;
 
 namespace Dimico.Server.Features.Profiles
 {
@@ -10,19 +13,36 @@ namespace Dimico.Server.Features.Profiles
     public class ProfilesController : ApiController
     {
         private readonly IProfileServices profiles;
+        private readonly IFollowService follows;
         private readonly ICurrentUserService currentUser;
 
         public ProfilesController(
             IProfileServices profiles, 
-            ICurrentUserService currentUser)
+            ICurrentUserService currentUser, IFollowService follows)
         {
             this.profiles = profiles;
             this.currentUser = currentUser;
+            this.follows = follows;
         }
 
         [HttpGet]
-        public async Task<ActionResult<ProfileServiceModel>> Mine()
-            => await this.profiles.ByUser(this.currentUser.GetId());
+        public async Task<ProfileServiceModel> Mine()
+            => await this.profiles.ByUser(this.currentUser.GetId(),allInformation: true);
+
+        [HttpGet]
+        [Route(Id)]
+        public async Task<ProfileServiceModel> Details(string id)
+        {
+            var includeAllInformation = await this.follows
+                .IsFollower(id, this.currentUser.GetId());
+
+            if (!includeAllInformation)
+            {
+                includeAllInformation = await this.profiles.IsPublic(id);
+            }
+
+            return await this.profiles.ByUser(id,includeAllInformation);
+        }
 
         [HttpPut]
         public async Task<IActionResult> Update(UpdateProfileRequestModel model)
