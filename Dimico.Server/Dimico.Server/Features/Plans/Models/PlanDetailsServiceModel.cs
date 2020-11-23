@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Dimico.Server.Features.Plans.Models
+﻿namespace Dimico.Server.Features.Plans.Models
 {
     public class PlanDetailsServiceModel : PlanListingServiceModel
     {

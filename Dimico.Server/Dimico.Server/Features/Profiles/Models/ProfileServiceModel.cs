@@ -1,6 +1,4 @@
-﻿ using Dimico.Server.Data.Models;
-
-namespace Dimico.Server.Features.Profiles.Models
+﻿ namespace Dimico.Server.Features.Profiles.Models
 {
     public class ProfileServiceModel
     {

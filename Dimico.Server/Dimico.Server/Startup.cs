@@ -1,3 +1,4 @@
+using Dimico.Server.Features.Profiles;
 using Dimico.Server.Infrastructure;
 using Dimico.Server.Infrastructure.Extensions;
 using Dimico.Server.Infrastructure.Filters;
@@ -24,6 +25,7 @@ namespace Dimico.Server
                 .AddIdentity()
                 .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
                 .AddApplicationServices()
+                .AddAutomapper()
                 .AddSwagger()
                 .AddApiControllers();
         

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30626.31
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dimico.Server", "Dimico.Server\Dimico.Server.csproj", "{F27CAC6A-EB5E-4B97-8674-50743415C178}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimico.Server", "Dimico.Server\Dimico.Server.csproj", "{F27CAC6A-EB5E-4B97-8674-50743415C178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dimico.Tests", "Dimico.Tests\Dimico.Tests.csproj", "{01718F0B-E013-4D08-BE1C-65747E085C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F27CAC6A-EB5E-4B97-8674-50743415C178}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F27CAC6A-EB5E-4B97-8674-50743415C178}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F27CAC6A-EB5E-4B97-8674-50743415C178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01718F0B-E013-4D08-BE1C-65747E085C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01718F0B-E013-4D08-BE1C-65747E085C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01718F0B-E013-4D08-BE1C-65747E085C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01718F0B-E013-4D08-BE1C-65747E085C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

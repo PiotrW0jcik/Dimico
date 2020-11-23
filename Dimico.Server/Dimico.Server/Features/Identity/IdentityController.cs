@@ -8,11 +8,13 @@ using Microsoft.Extensions.Options;
 
 namespace Dimico.Server.Features.Identity
 {
+
     public  class IdentityController : ApiController
     {
         private readonly UserManager<User> userManager;
         private readonly IIdentityServices identity;
         private readonly AppSettings appSettings;
+     
 
         public IdentityController(
             UserManager<User> userManager,

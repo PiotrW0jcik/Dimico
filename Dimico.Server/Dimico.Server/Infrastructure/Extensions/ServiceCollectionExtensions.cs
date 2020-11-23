@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using AutoMapper;
 using Dimico.Server.Data;
 using Dimico.Server.Data.Models;
 using Dimico.Server.Features.Follows;
@@ -85,6 +86,10 @@ namespace Dimico.Server.Infrastructure.Extensions
                 .AddTransient<IPlanService, PlanService>()
                 .AddTransient<IFollowService, FollowService>()
                 .AddTransient<ISearchService, SearchService>();
+
+
+        public static IServiceCollection AddAutomapper(this IServiceCollection services)
+            => services.AddAutoMapper(typeof(IProfileServices).Assembly);
 
         public static IServiceCollection AddSwagger(this IServiceCollection services) 
             => services.AddSwaggerGen(c =>
