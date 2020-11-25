@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dimico.Server.Data.Models;
 using Dimico.Server.Features.Plans.Models; 
 using Dimico.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -42,11 +44,12 @@ namespace Dimico.Server.Features.Plans
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreatePlanRequestModel model)
         {
+            
             var userId = this.currentUser.GetId();
-
             var id = await this.plans.Create(
                 model.ImageUrl, 
                 model.Description, 
+                model.Type,
                 userId);
 
             return Created(nameof(this.Create), id);

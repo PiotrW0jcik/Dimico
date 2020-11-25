@@ -27,7 +27,7 @@ namespace Dimico.Tests
                         UserId = "1"
                     }) );
 
-            var result = planeServiceMock.Object.Create("djasghkdhsa", "dsadhsads", "dsadsads");
+            //var result = planeServiceMock.Object.Create("djasghkdhsa", "dsadhsads", "dsadsads");
            
 
         }

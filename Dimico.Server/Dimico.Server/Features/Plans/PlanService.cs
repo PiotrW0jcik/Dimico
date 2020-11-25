@@ -23,13 +23,15 @@ namespace Dimico.Server.Features.Plans
             this.mapper = mapper;
         }
 
-        public async Task<int> Create(string imageUrl, string description, string userId)
+        public async Task<int> Create(string imageUrl, string description, PlanType type,string userId)
         {
+           
             var plan = new Plan
             {
                 Description = description,
                 ImageUrl = imageUrl,
-                UserId = userId
+                UserId = userId,
+                Type = type
             };
             this.data.Add(plan);
             await this.data.SaveChangesAsync();

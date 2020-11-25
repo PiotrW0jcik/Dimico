@@ -15,6 +15,8 @@ namespace Dimico.Server.Data.Models
         [Required]
         public string ImageUrl { get; set; }
 
+        public PlanType Type { get; set; }
+
         [Required]
         public string UserId { get; set; }
 
