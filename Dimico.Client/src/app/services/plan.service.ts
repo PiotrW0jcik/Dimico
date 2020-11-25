@@ -13,7 +13,7 @@ export class PlanService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   create(data): Observable<Plan>{
-    return this.http.post<Plan>(this.planPath, data);
+    return this.http.post<Plan>(this.planPath,{ImageUrl : data.ImageUrl,Type : Number(data.Type), Description : data.Description});
   }
 
   getPlans(): Observable<Array<Plan>> {

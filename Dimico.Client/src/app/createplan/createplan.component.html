@@ -11,6 +11,13 @@
           This field is required!
         </div>
         <div class="form-group">
+          <label for="exampleInputEmail1">Plan type</label>
+          <select class="form-control" formControlName="Type" >
+            <option  value=0 type= "number">Training</option>
+            <option  value=1>Nutritional</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="exampleFormControlTextarea1">Description</label>
           <textarea class="form-control" rows="3" formControlName = "Description"></textarea>
         </div>

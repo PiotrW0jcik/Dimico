@@ -5,6 +5,8 @@
                 <img [src]="plan.imageUrl" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{plan.id}}</h5>
+                  <div *ngIf="!plan.type; else elseBlock"><h6>Training Plan</h6></div>
+                  <ng-template #elseBlock><h6> Nutritional Plan</h6></ng-template>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <a routerLink="/plans/{{plan.id}}" class="btn btn-primary">See plan details</a>
                   <button class="btn btn-warning" (click)="editPlan(plan.id)">Edit</button>
