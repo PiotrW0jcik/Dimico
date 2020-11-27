@@ -2,8 +2,6 @@ import { PlanService } from '../services/plan.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { throwError } from 'rxjs';
-import { NUMBER_TYPE } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-createplan',

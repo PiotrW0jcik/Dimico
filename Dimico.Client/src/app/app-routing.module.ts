@@ -7,6 +7,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { ListPlansComponent } from './list-plans/list-plans.component';
 import { DetailsPlanComponent } from './details-plan/details-plan.component';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
+import { DetailsProfileComponent } from './details-profile/details-profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,7 +16,9 @@ const routes: Routes = [
   { path: 'create' , component: CreateplanComponent, canActivate: [AuthGuardService]},
   { path: 'plans', component: ListPlansComponent, canActivate: [AuthGuardService]},
   { path: 'plans/:id', component: DetailsPlanComponent, /*canActivate: [AuthGuardService*/},
-  { path: 'plans/:id/edit', component: EditPlanComponent }
+  { path: 'plans/:id/edit', component: EditPlanComponent},
+  { path: 'profile', component: DetailsProfileComponent},
+  { path: 'profile/edit', component: EditProfileComponent}
 ];
 
 @NgModule({

@@ -18,6 +18,8 @@ import { EditPlanComponent } from './edit-plan/edit-plan.component';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { DetailsProfileComponent } from './details-profile/details-profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ToastrModule } from 'ngx-toastr';
     CreateplanComponent,
     ListPlansComponent,
     DetailsPlanComponent,
-    EditPlanComponent
+    EditPlanComponent,
+    DetailsProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
