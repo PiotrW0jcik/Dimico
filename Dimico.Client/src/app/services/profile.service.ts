@@ -9,11 +9,13 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ProfileService {
-  private planPath = environment.apiUrl + '/profiles';
+  private profilePath = environment.apiUrl + '/profiles';
   constructor(private http: HttpClient, private authService: AuthService) { }
-
+  getProfile(): Observable<Profile> {
+    return this.http.get<Profile>(this.profilePath);
+  }
   create(data): Observable<Profile>{
-    return this.http.put<Profile>(this.planPath,{
+    return this.http.put<Profile>(this.profilePath,{
       Email: data.Email,
       UserName: data.UserName,
       Name: data.Name,
@@ -22,7 +24,7 @@ export class ProfileService {
       Biography: data.Biography,
       Gender: Number(data.Gender),
       IsPrivate: data.IsPrivate 
-  });
+  }) 
   }
 }
  

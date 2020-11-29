@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'create' , component: CreateplanComponent, canActivate: [AuthGuardService]},
   { path: 'plans', component: ListPlansComponent, canActivate: [AuthGuardService]},
-  { path: 'plans/:id', component: DetailsPlanComponent, /*canActivate: [AuthGuardService*/},
-  { path: 'plans/:id/edit', component: EditPlanComponent},
-  { path: 'profile', component: DetailsProfileComponent},
-  { path: 'profile/edit', component: EditProfileComponent}
+  { path: 'plans/:id', component: DetailsPlanComponent, canActivate: [AuthGuardService]},
+  { path: 'plans/:id/edit', component: EditPlanComponent , canActivate: [AuthGuardService]},
+  { path: 'profile', component: DetailsProfileComponent, canActivate: [AuthGuardService]},
+  { path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
